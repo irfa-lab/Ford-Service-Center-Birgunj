@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ford Service Center — Birgunj: Authorized Ford car service with genuine parts, models supported, and regular servicing every 10,000 km.">
+    <title>Ford Service Center — Birgunj</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+
+<!-- Navigation -->
+<header class="bg-white shadow p-6 rounded-2xl flex justify-between items-center">
+    <h1 class="text-3xl font-bold flex items-center gap-2">Ford Service Center — Birgunj</h1>
+    <nav class="flex gap-4 text-lg">
+        <a href="#home" class="hover:underline">Home</a>
+        <a href="#about" class="hover:underline">About</a>
+        <a href="#parts" class="hover:underline">Parts</a>
+        <a href="#models" class="hover:underline">Models</a>
+        <a href="#contact" class="hover:underline">Contact</a>
+    </nav>
+    <a href="https://wa.me/9779811111111" target="_blank" class="flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-2xl shadow">WhatsApp</a>
+</header>
+
+<main class="p-4 space-y-8">
+
+<!-- Home / About Section -->
+<section id="home" class="bg-white p-6 rounded-2xl shadow space-y-4">
+    <h2 class="text-2xl font-bold">Welcome to Ford Service Center — Birgunj</h2>
+    <p>We provide authorized Ford car services with genuine parts, expert mechanics, and reliable solutions.</p>
+</section>
+
+<section id="about" class="bg-white p-6 rounded-2xl shadow space-y-4">
+    <h2 class="text-2xl font-bold">About Ford Cars</h2>
+    <p>Ford cars are built with high-quality engineering and advanced safety features to ensure a reliable and secure driving experience. With durable build quality, innovative technology, and comfortable interiors, Ford vehicles offer excellent performance and longevity.</p>
+    <p>Why choose Ford? They combine safety, comfort, and efficiency, suitable for families, professionals, and adventure seekers. Every Ford car undergoes strict safety tests and comes with features like airbags, ABS, reinforced chassis, and more.</p>
+    <p>Regular servicing is recommended every 10,000 kilometers to maintain peak performance, prevent potential issues, and ensure longevity of your vehicle.</p>
+</section>
+
+<!-- Parts Section -->
+<section id="parts" class="bg-white p-6 rounded-2xl shadow space-y-4">
+    <h2 class="text-2xl font-bold">Available Parts</h2>
+    <input type="text" placeholder="Search parts or model..." id="searchInput" class="w-full p-3 border rounded-xl mb-4">
+    <div id="partsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"></div>
+</section>
+
+<!-- Models Section -->
+<section id="models" class="bg-white p-6 rounded-2xl shadow">
+    <h2 class="text-2xl font-bold mb-4">Ford Service Center — Birgunj Models Supported</h2>
+    <ul class="list-disc pl-6 space-y-2 text-lg">
+        <li>Ford Figo</li>
+        <li>Ford EcoSport</li>
+        <li>Ford Aspire</li>
+        <li>Ford Ranger</li>
+        <li>Ford Endeavour</li>
+    </ul>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="bg-white p-6 rounded-2xl shadow space-y-4">
+    <h2 class="text-2xl font-bold">Contact Us</h2>
+    <p>Ford Service Center — Birgunj, Birgunj, Nepal</p>
+    <p>Phone: +977-9811111111</p>
+    <a href="https://wa.me/9779811111111" target="_blank" class="flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-xl w-fit">Chat on WhatsApp</a>
+</section>
+
+</main>
+
+<footer class="text-center text-gray-600 py-6">© 2025 Ford Service Center — Birgunj • Birgunj, Nepal</footer>
+
+<script>
+const parts = [
+    { name: "Ford Figo Headlight", model: "Figo", img: "https://via.placeholder.com/150" },
+    { name: "Ford EcoSport Clutch Plate", model: "EcoSport", img: "https://via.placeholder.com/150" },
+    { name: "Ford Ranger Brake Pad", model: "Ranger", img: "https://via.placeholder.com/150" },
+    { name: "Ford Aspire Bumper", model: "Aspire", img: "https://via.placeholder.com/150" },
+];
+
+const partsGrid = document.getElementById('partsGrid');
+const searchInput = document.getElementById('searchInput');
+
+function renderParts(filter = '') {
+    partsGrid.innerHTML = '';
+    parts.filter(p => p.name.toLowerCase().includes(filter.toLowerCase()) || p.model.toLowerCase().includes(filter.toLowerCase()))
+         .forEach(part => {
+             const card = document.createElement('div');
+             card.className = 'bg-white rounded-2xl shadow p-4';
+             card.innerHTML = `
+                <img src="${part.img}" alt="${part.name}" class="w-full h-40 object-cover rounded-xl mb-2">
+                <h3 class="text-xl font-semibold">${part.name}</h3>
+                <p class="text-gray-600">Model: ${part.model}</p>
+                <a href='tel:+9779811111111' class='block mt-2 bg-blue-500 text-white text-center py-2 rounded-xl'>Call to Check Availability</a>
+             `;
+             partsGrid.appendChild(card);
+         });
+}
+
+searchInput.addEventListener('input', e => renderParts(e.target.value));
+renderParts();
+</script>
+
+</body>
+</html>
